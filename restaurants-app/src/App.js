@@ -8,7 +8,8 @@ import RestaurantUpdate from "./components/RestaurantUpdate";
 import RestaurantSearch from "./components/RestaurantSearch";
 import RestaurantCreate from "./components/RestaurantCreate";
 import Login from "./components/Login";
-import NavBarMenu from "./components/NavBarMenu";
+import Protected from "./components/Protected";
+
 import Logout from "./components/Logout";
 
 
@@ -16,17 +17,24 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <NavBarMenu />
-        <Route path="/list"><RestaurantsList /></Route>
+        
+        {/* <Route path="/list"><RestaurantsList /></Route>
         <Route path="/create"><RestaurantCreate /></Route>
-        <Route path="/search"><RestaurantSearch /></Route>
-
-        <Route path="/update/:id" render={props=>(<RestaurantUpdate 
-        {...props} />)}></Route>
+        <Route path="/search"><RestaurantSearch /></Route> */}
+        {/* <Route path="/update/:id" render={props=>(<RestaurantUpdate 
+        {...props} />)}></Route> */}
         <Route path="/logout"><Logout /></Route>
         <Route path="/login" render={props=>(<Login 
         {...props} />)}></Route>
-        <Route path="/" exact><Home /></Route>
+
+        {/* <Route path="/" exact><Home /></Route> */}
+        <Protected path="/"  component={Home} exact />
+        <Protected path="/list"  component={RestaurantsList}  />
+        <Protected path="/create"  component={RestaurantCreate}  />
+        <Protected path="/search"  component={RestaurantSearch}  />
+        <Protected path="/update/:id"  component={RestaurantUpdate}  />
+
+
       </Router>
     </div>
   );

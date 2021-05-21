@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NavBarMenu from "./NavBarMenu";
 
 class Login extends Component {
     constructor(){
@@ -27,6 +28,7 @@ class Login extends Component {
     render() {
         return (
             <div>
+                <NavBarMenu />
                 <input type="text" placeholder="Enter Name"  name="user" onChange={(event)=>this.setState({name:event.target.value})}/> <br /> <br />
                 <input type="password"  placeholder="Enter Password"  name="password" onChange={(event)=>this.setState({password:event.target.value})}/> <br /> <br />
                 <button onClick={()=>{this.login()}}>Login</button>
